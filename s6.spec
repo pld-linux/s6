@@ -17,6 +17,29 @@ s6 is a small suite of programs for UNIX, designed to allow process
 supervision (a.k.a service supervision), in the line of daemontools
 and runit.
 
+%package doc
+Summary:	Manual for %{name}
+Summary(fr.UTF-8):	Documentation pour %{name}
+Summary(it.UTF-8):	Documentazione di %{name}
+Summary(pl.UTF-8):	Podręcznik dla %{name}
+Group:		Documentation
+# noarch subpackages only when building with rpm5
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
+%description doc
+Documentation for %{name}.
+
+%description doc -l fr.UTF-8
+Documentation pour %{name}.
+
+%description doc -l it.UTF-8
+Documentazione di %{name}.
+
+%description doc -l pl.UTF-8
+Dokumentacja do %{name}.
+
 %prep
 %setup -qc
 mv admin/%{name}-%{version}/* .
@@ -45,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_examplesdir}/%{name}-%{version}}
 
 install -p command/* $RPM_BUILD_ROOT%{_sbindir}
-cp -a examples/ $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -79,4 +102,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/s6lockd
 %attr(755,root,root) %{_sbindir}/s6lockd-helper
 %attr(755,root,root) %{_sbindir}/ucspilogd
+
+%files doc
+%defattr(644,root,root,755)
+%doc doc/*
 %{_examplesdir}/%{name}-%{version}
