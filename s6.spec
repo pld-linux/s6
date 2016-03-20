@@ -1,4 +1,4 @@
-Summary:	skarnet.org's small and secure supervision software suite"
+Summary:	skarnet.org's small and secure supervision software suite
 Name:		s6
 Version:	1.1.1
 Release:	1
