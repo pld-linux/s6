@@ -37,9 +37,7 @@ Summary(it.UTF-8):	Documentazione di %{name}
 Summary(pl.UTF-8):	Podręcznik dla %{name}
 Group:		Documentation
 # noarch subpackages only when building with rpm5
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description doc
 Documentation for %{name}.
